@@ -87,3 +87,20 @@ client.socket.on('message send', async function (data) {
     processQueue();
   }
 });
+
+client.socket.on('connect', () => {
+  console.log('[BOT] Bağlantı başarılı. 81899640 ID\'li gruba giriş yapılıyor...');
+
+  const groupId = 81899640;
+  const password = undefined; // Şifreli gruplar için şifre girilebilir
+  const referrer = undefined; // Gerekirse referrer bilgisi eklenebilir
+
+  PalringoJoinedGroups.joinGroup(groupId, password, referrer)
+    .then(() => {
+      console.log(`[BOT] Gruba başarıyla girildi: ${groupId}`);
+    })
+    .catch(err => {
+      console.warn(`[BOT] Gruba giriş başarısız: ${err.message || err}`);
+    });
+});
+
