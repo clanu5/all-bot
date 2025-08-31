@@ -3,12 +3,7 @@ let lastFishTimestamp = 0;
 let messageQueue = [];
 let isProcessing = false;
 
-const commandMap = {
-  fish: '!fish',
-  hunt: '!hunt',
-  heist: '!heist',
-  hero: '!hero',
-};
+
 
 // Mesaj gönderme fonksiyonu
 let _sendMessage = (targetId, content, isGroup) => {
