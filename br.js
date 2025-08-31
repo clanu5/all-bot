@@ -3,6 +3,14 @@ let lastFishTimestamp = 0;
 let messageQueue = [];
 let isProcessing = false;
 
+const commandMap = {
+  fish: '!fish',
+  hunt: '!hunt',
+  heist: '!heist',
+  hero: '!hero',
+};
+
+// Mesaj gönderme fonksiyonu
 let _sendMessage = (targetId, content, isGroup) => {
   let packet = {
     body: {
@@ -20,6 +28,7 @@ let _sendMessage = (targetId, content, isGroup) => {
 
 let sendGroupMessage = (targetId, content) => _sendMessage(targetId, content, true);
 
+// Kuyruk işleyici
 async function processQueue() {
   if (isProcessing || messageQueue.length === 0) return;
   isProcessing = true;
@@ -30,16 +39,31 @@ async function processQueue() {
   setTimeout(() => {
     isProcessing = false;
     processQueue();
-  }, 10000); // 10 saniye bekleme
+  }, 10000); // 10 saniye bekle
 }
 
-// Gruba otomatik giriş
+// Gruba otomatik giriş (PalringoJoinedGroups ile)
+async function joinTargetGroup() {
+  const groupId = 81899640;
+  const password = undefined; // Şifreli grupsa şifre gir
+  const referrer = undefined;
+
+  try {
+    console.log('Gruba giriş yapılıyor:', groupId);
+    await PalringoJoinedGroups.joinGroup(groupId, password, referrer);
+    console.log('Gruba başarıyla girildi:', groupId);
+  } catch (err) {
+    console.warn('Gruba giriş hatası:', err.message || err);
+  }
+}
+
+// Bağlantı kurulduğunda gruba giriş yap
 client.socket.on('connect', () => {
-  console.log('Bağlantı kuruldu. 81899640 ID\'li gruba giriş yapılıyor...');
-  client.socket.emit('group join', { groupId: 81899640 });
+  console.log('Socket bağlantısı kuruldu.');
+  joinTargetGroup();
 });
 
-// Mesaj dinleme ve kuyruğa ekleme
+// Mesaj dinleyici
 client.socket.on('message send', async function (data) {
   let message = data.body;
   message.text = new TextDecoder().decode(message.data);
