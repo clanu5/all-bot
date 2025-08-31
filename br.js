@@ -3,8 +3,6 @@ let lastFishTimestamp = 0;
 let messageQueue = [];
 let isProcessing = false;
 
-
-
 // Mesaj gönderme fonksiyonu
 let _sendMessage = (targetId, content, isGroup) => {
   let packet = {
