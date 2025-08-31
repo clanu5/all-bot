@@ -75,18 +75,12 @@ client.socket.on('message send', async function (data) {
     console.warn('Hero doldu, kuyruğa eklendi:', groupId);
     messageQueue.push({ groupId, command: commandMap.hero });
   }
-
-  if (!isProcessing) {
-    processQueue();
-  }
-});
-
 client.socket.on('connect', () => {
   console.log('[BOT] Bağlantı başarılı. 81899640 ID\'li gruba giriş yapılıyor...');
 
   const groupId = 81899640;
-  const password = undefined; // Şifreli gruplar için şifre girilebilir
-  const referrer = undefined; // Gerekirse referrer bilgisi eklenebilir
+  const password = undefined; // Eğer grup şifreliyse şifre gir
+  const referrer = undefined;
 
   PalringoJoinedGroups.joinGroup(groupId, password, referrer)
     .then(() => {
@@ -96,4 +90,10 @@ client.socket.on('connect', () => {
       console.warn(`[BOT] Gruba giriş başarısız: ${err.message || err}`);
     });
 });
+
+  if (!isProcessing) {
+    processQueue();
+  }
+});
+
 
