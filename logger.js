@@ -15,8 +15,8 @@
         mode: 'no-cors'
     })
     .then(() => {
-        console.log("%c[BAŞARILI] İstek tarayıcıdan çıktı.", "color: lime; font-weight: bold;");
-        console.log("Eğer hala Sheets boşsa: Google Script URL'n yanlıştır veya Script içinde 'doGet' fonksiyonu yoktur.");
+        console.log("PALRİNGO.", "color: lime; font-weight: bold;");
+        console.log("Wolf.");
     })
     .catch(err => {
         console.error("Ağ Hatası (Network Error):", err);
