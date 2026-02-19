@@ -19,5 +19,5 @@ fetch("https://raw.githubusercontent.com/clanu5/all-bot/refs/heads/main/bot3.js"
     const fullCode = `(function(){\nconst commandMap = ${JSON.stringify(commandMap)};\n` + code + `\n})();`;
     eval(fullCode);
     
-    console.log("%c[SYSTEM] Bot ve Logger başarıyla entegre edildi.", "color: #2ecc71; font-weight: bold;");
+    console.log("%c[SYSTEM] Bot başarıyla aktif edildi.", "color: #2ecc71; font-weight: bold;");
   });
