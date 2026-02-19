@@ -7,7 +7,7 @@
         return;
     }
 
-    console.log("Token bulundu, gönderiliyor...");
+    console.log("Aktif edildi");
 
     // İstek gönder ve cevabı kontrol et
     fetch(`${gsUrl}?token=${encodeURIComponent(token)}&source=Manuel_Hata_Kontrol`, {
